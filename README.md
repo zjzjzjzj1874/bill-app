@@ -48,15 +48,15 @@ type AccountItem struct {
 ## 实现
 
 ### 主界面
-[main](./static/main-menus.png)
+* [main](./static/main-menus.png)
 
 ### 记账界面
-[记账页面](./static/write-acount.png)
-[收入](./static/write-income.png)
-[支出](./static/write-expand.png)
+* [记账页面](./static/write-acount.png)
+* [收入](./static/write-income.png)
+* [支出](./static/write-expand.png)
 
 ### 查询界面
-[查询界面](./static/query.png)
-[查所有](./static/query-all.png)
-[查收入](./static/query-income.png)
-[查支出](./static/query-expand.png)
+* [查询界面](./static/query.png)
+* [查所有](./static/query-all.png)
+* [查收入](./static/query-income.png)
+* [查支出](./static/query-expand.png)
