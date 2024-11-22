@@ -18,7 +18,7 @@ void showMainMenu() {
 
 // 显示记账菜单
 void showAccountingMenu() {
-    system("clear"); // 清屏
+    // system("clear"); // 清屏
     cout << "===========================================================" << endl;
     cout << "|==================== 请选择记账种类 =====================|" << endl;
     cout << "|                                                         |" << endl;
@@ -33,7 +33,7 @@ void showAccountingMenu() {
 
 // 显示查询菜单
 void showQueryMenu() {
-    system("clear"); // 清屏
+    // system("clear"); // 清屏
     cout << "==============================================================" << endl;
     cout << "|====================== 请选择查询条件 ======================|" << endl;
     cout << "|                                                            |" << endl;
