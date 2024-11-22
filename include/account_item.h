@@ -14,12 +14,11 @@ struct AccountItem {
     int createdAt; // 创建时间
 
     // 定义打印格式的函数
-    string to_string() const {
+    string toFormattedString() const {
         ostringstream oss;
-        oss << "Type: " << itemType
-            << " Amount: " << amount
-            << " Note: " << note
-            << " CreatedAt: " << createdAt;
+        oss << itemType << "\t" << amount 
+            << "\t" << note << "\t\t" << 
+            createdAt;
             
         return oss.str();
     }
@@ -52,5 +51,9 @@ void income(vector<AccountItem>& items);
 // 支出
 void expand(vector<AccountItem>& items);
 
+// 查询账目
+void queryItems(const vector<AccountItem>& items);
+// 重载查询账目
+void queryItems(const vector<AccountItem>& items, const string itemType/* 收支类型 */);
 
 #endif //ACCOUNTITEM_H

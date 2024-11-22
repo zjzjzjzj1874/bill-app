@@ -14,7 +14,7 @@ void loadDataFromFile(vector<AccountItem>& items) {
     while (input >> item.itemType >> item.amount >> item.note >> item.createdAt) {
         items.push_back(item);
 
-        cout << "item: " << item.to_string() << endl;
+        cout << "item: " << item.toFormattedString() << endl;
     }
 
 
@@ -52,21 +52,14 @@ void loadDataFromFile(vector<AccountItem>& items) {
 void accounting(vector<AccountItem>& items) {
     // 3.读取键盘选择，做合法性校验
     char key = readMenuSelection(3);
-    string str;
     switch (key) {
         case '1':
             // 收入
             income(items);
-
-            cout << "请输入回车返回主菜单..." << endl;
-            getline(cin, str);
             break;
         case '2':
             // 支出
             expand(items);
-
-            cout << "请输入回车返回主菜单..." << endl;
-            getline(cin, str);
             break;
         default: // 退出，无需校验，返回主菜单即可
             break;
@@ -96,6 +89,10 @@ void income(vector<AccountItem>& items) {
 
     // 持久化文件
     insertIntoFile(item);
+
+    string str;
+    cout << "请输入回车返回主菜单..." << endl;
+    getline(cin, str);
 }
 // 记录一笔支出
 void expand(vector<AccountItem>& items) {
@@ -119,6 +116,10 @@ void expand(vector<AccountItem>& items) {
 
     // 持久化文件
     insertIntoFile(item);
+
+    string str;
+    cout << "请输入回车返回主菜单..." << endl;
+    getline(cin, str);
 }
 
 // 记账到文本中
@@ -135,45 +136,68 @@ void insertIntoFile(const AccountItem& item) {
 // 查询
 void query(const vector<AccountItem>& items) {
     // 3.读取键盘选择，做合法性校验
-    string str;
     char key = readMenuSelection(4);
-    int total = 0;
     switch (key) {
         case '1':
             // 统计所有账目
-            for (AccountItem item : items) {
-                cout << item.to_string() << endl;
-            }
-
-            cout << "请输入回车返回主菜单..." << endl;
-            getline(cin, str);
+            queryItems(items);
             break;
         case '2':
             // 统计收入
-            for (AccountItem item : items) {
-                if (item.itemType == INCOME) {
-                    total += item.amount;
-                    cout << item.to_string() << endl;
-                }
-            }
-            cout << "总收入：" << total << endl;
-            cout << "请输入回车返回主菜单..." << endl;
-            getline(cin, str);
+            queryItems(items, INCOME);
             break;
         case '3':
             // 统计支出
-            for (AccountItem item : items) {
-                if (item.itemType == EXPAND) {
-                    total += item.amount;
-                    cout << item.to_string() << endl;
-                }
-            }
-            cout << "总支出：" << total << endl;
-            cout << "请输入回车返回主菜单..." << endl;
-            getline(cin, str);
+            queryItems(items, EXPAND);
             break;
         default: // 退出，无需校验，返回主菜单即可
             break;
     }
     cout << endl;
+}
+
+// 查询所有
+void queryItems(const vector<AccountItem>& items) {
+    cout << "-------------------- 查询结果 --------------------" << endl;
+    cout << "\n类型\t金额\t备注\t\t日期\n" << endl;
+
+    int totalIncome = 0;
+    int totalExpand = 0;
+    
+    for (auto item : items) {
+
+        cout << item.toFormattedString() << endl;
+        if (item.itemType == INCOME)
+            totalIncome += item.amount;
+        else
+            totalExpand += item.amount;
+    }
+
+    cout << "--------------------------------------------------" << endl;
+    cout << "总收入：" << totalIncome << endl;
+    cout << "总支出：" << totalExpand << endl;
+
+    string str;
+    cout << "请输入回车返回主菜单..." << endl;
+    getline(cin, str);
+}
+
+// 根据条件查询
+void queryItems(const vector<AccountItem>& items, const string itemType) {
+    cout << "--------------------- 查询结果 ---------------------" << endl;
+    cout << "\n 类型\t金额\t备注\t\t日期\n" << endl;
+    int total = 0;
+    for (AccountItem item : items) {
+        if (item.itemType == itemType) {
+            total += item.amount;
+            cout << item.toFormattedString() << endl;
+        }
+    }
+    
+    cout << "----------------------------------------------------" << endl;
+    cout << (itemType == INCOME ? "总收入：" : "总支出：") << total << endl;
+
+    string str;
+    cout << "请输入回车返回主菜单..." << endl;
+    getline(cin, str);
 }
