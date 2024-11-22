@@ -12,10 +12,8 @@ int main() {
         // 2.显示主菜单
         showMainMenu();
 
-        cin.get();
         // 3.读取键盘选择，做合法性校验
         char key = readMenuSelection(3);
-
         switch (key) {
             case '1':
                 // 记账操作
@@ -30,8 +28,10 @@ int main() {
             case '3':
                 // 退出
                 cout << "\n确认退出？（Y/N）";
-                if (readQuitConfirm() == 'Y')
+                if (readQuitConfirm() == 'Y') {
+                    cout << "下次再见，拜拜！" << endl;
                     quit = true;
+                }
                 break;
             default:
                 break;

@@ -1,6 +1,8 @@
 # bill-app
 bill-app
 
+【BiliBili尚硅谷武老师C++练手小项目】
+
 ## 基于命令行做的记账软件
 
 
@@ -40,3 +42,21 @@ type AccountItem struct {
 * 主程序入口：account.app
 * 结构体`AccountItem`定义，涉及到账目操作的函数申明，放到头文件`account_item.h`中，通用的设置和功能性函数，放到另一个头文件`common，h`中；
 * 不同用途的函数放在不同文件中；绘制菜单的函数放到`menus.cpp`中，读取键盘输入的函数放到`read_input.cpp`中；针对账目的所有操作函数放到`operations.cpp`中；
+
+
+
+## 实现
+
+### 主界面
+[main](./static/main-menus.png)
+
+### 记账界面
+[记账页面](./static/write-acount.png)
+[收入](./static/write-income.png)
+[支出](./static/write-expand.png)
+
+### 查询界面
+[查询界面](./static/query.png)
+[查所有](./static/query-all.png)
+[查收入](./static/query-income.png)
+[查支出](./static/query-expand.png)
