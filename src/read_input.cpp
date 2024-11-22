@@ -55,6 +55,7 @@ int readAmount() {
             break;
         } catch(invalid_argument e) {
             cout << "输入错误，请正确输入数字：" << endl;
+            continue;
         }
         
         break;

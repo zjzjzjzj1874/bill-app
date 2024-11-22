@@ -28,7 +28,7 @@ int main() {
             case '3':
                 // 退出
                 cout << "\n确认退出？（Y/N）";
-                if (readQuitConfirm() == 'Y') {
+                if (toupper(readQuitConfirm()) == 'Y') {
                     cout << "下次再见，拜拜！" << endl;
                     quit = true;
                 }
